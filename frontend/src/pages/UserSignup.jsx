@@ -6,10 +6,23 @@ const UserSignup = () => {
   const [Password, setPassword] = useState('')
   const [name, setName] = useState('')
   const [Lastname, setLastName] = useState('')
+  const [userData, setUserData] = useState({})
 
   const submitHandler = (e) => {
     e.preventDefault();
+    setEmail('')
+    setPassword('')
     setName("")
+    setLastName('')
+    setUserData({
+      username:{
+        name:name,
+        lastname:Lastname
+      },
+      email: Email,
+      password: Password,
+    })
+    console.log(userData);
     
   }
   return (
@@ -39,6 +52,10 @@ const UserSignup = () => {
             placeholder="First name"
           />
           <input
+           value={Lastname}
+           onChange={(e)=>{
+             setLastName(e.target.value)
+           }}
             className="bg-[#eeeeee] w-1/2  rounded px-4 py-2 border test-lg placeholder:text-base"
             required
             type="text"
@@ -47,6 +64,10 @@ const UserSignup = () => {
           </div>
           <h3 className="test-lg font-medium mb-2">What's your email</h3>
           <input
+           value={Email}
+           onChange={(e)=>{
+             setEmail(e.target.value)
+           }}
             className="bg-[#eeeeee] mb-6 rounded px-4 py-2 border w-full test-lg placeholder:text-base"
             required
             type="email"
@@ -54,6 +75,10 @@ const UserSignup = () => {
           />
           <h3 className="test-lg font-medium mb-2">Enter your Password</h3>
           <input
+           value={Password}
+           onChange={(e)=>{
+             setPassword(e.target.value)
+           }}
             className="bg-[#eeeeee] mb-6 rounded px-4 py-2 border w-full test-lg placeholder:text-base"
             required
             type="password"
@@ -71,9 +96,8 @@ const UserSignup = () => {
         </form>
       </div>
       <div>
-        <p className='text-[10px] leading-tight'>By proceeding, you consent to get calls, whatsapp or SMS
-          massages, includeing by automated means, from Uber and
-          its affiliats to the number provided.
+        <p className='text-[10px] leading-tight'>This site is protected by reCAPTCHA and the <span className='underline'>Google Privacy
+         Policy</span> and <span className='underline'>Terms of Service apply.</span>
         </p>
       </div>
     </div>
